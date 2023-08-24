@@ -2,30 +2,31 @@
 using gwp.Models;
 using gwp.Services;
 using Microsoft.AspNetCore.Mvc;
-using Moq;
-using Xunit;
 
 namespace gwp.Tests.Controllers
 {
     public class GwpControllerTests
     {
         private readonly GwpController _sut;
-        private readonly Mock<IAvgService> _mockAwgService = new Mock<IAvgService>();
+        private readonly Mock<IAvgService> _avgServiceMock = new Mock<IAvgService>();
 
         public GwpControllerTests()
         {
-            _sut = new GwpController(_mockAwgService.Object);
+            _sut = new GwpController(_avgServiceMock.Object);
         }
 
         [Fact]
         public void Avg_ReturnsOkIfFound()
         {
-            _mockAwgService.Setup(s => s.GetAvgItems(It.IsAny<string>(), It.IsAny<List<string>>())).Returns(new Dictionary<string,double>());
+            // 1. Arrange
+            _avgServiceMock.Setup(s => s.GetAvgItems(It.IsAny<string>(), It.IsAny<List<string>>())).Returns(new Dictionary<string, double>());
 
-            var result = _sut.Avg(It.IsAny<AvgRequest>());
+            // 2. Act
+            var result = _sut.Avg(new AvgRequest { Country = "", Lob = new List<string>() });
 
-            _mockAwgService.Verify(v => v.GetAvgItems(It.IsAny<string>(), It.IsAny<List<string>>()), Times.Once);
-            Assert.IsType<OkObjectResult>(result);
+            // 3. Assert
+            _avgServiceMock.Verify(v => v.GetAvgItems(It.IsAny<string>(), It.IsAny<List<string>>()), Times.Once);
+            Assert.IsType<OkObjectResult>(result.Result);
         }
 
     }

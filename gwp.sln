@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwp", "gwp\gwp.csproj", "{6C987875-8155-4B9D-8C9C-BCAFD724FEFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwp.Tests", "gwp.UnitTests\gwp.Tests.csproj", "{F48E6D0C-F5F4-4E62-B029-1FA1DBF15989}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gwp.Tests", "gwp.Tests\gwp.Tests.csproj", "{F48E6D0C-F5F4-4E62-B029-1FA1DBF15989}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
